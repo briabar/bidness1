@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import BusinessGeneratorPage from '../BusinessGeneratorPage/BusinessGeneratorPage';
 import userService from "../../utils/userService";
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
+        <Route
+          path="/businessgenerator"
+          element={<BusinessGeneratorPage />}
+        />
       </Routes>
     );
   }
@@ -44,6 +49,10 @@ function App() {
       <Route
         path="/signup"
         element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
+      />
+      <Route
+        path="/businessgenerator"
+        element={<BusinessGeneratorPage />}
       />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
