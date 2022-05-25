@@ -12,7 +12,7 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
-import BusinessIdea from '../../components/BusinessIdea/BusinessIdea';
+import BusinessIdeaForm from '../../components/BusinessIdeaForm/BusinessIdeaForm';
 import * as ideaAPI from "../../utils/ideaAPI";
 
 
@@ -148,9 +148,9 @@ export default function LoginPage(props) {
         Math.floor(Math.random() * busTypes.length)]}. Using ${busAdjs[
         Math.floor(Math.random() * busAdjs.length)]} ${busNouns[
         Math.floor(Math.random() * busNouns.length)]} technology, ${bizName} is able to ${busAdvs[
-          Math.floor(Math.random() * busAdvs.length)]} ${busVerbs[
-            Math.floor(Math.random() * busVerbs.length)]} current ${busNouns[
-              Math.floor(Math.random() * busNouns.length)]} markets.`,
+        Math.floor(Math.random() * busAdvs.length)]} ${busVerbs[
+        Math.floor(Math.random() * busVerbs.length)]} current ${busNouns[
+        Math.floor(Math.random() * busNouns.length)]} markets.`,
     ]
     const ideaString = sentenceForms[0]
     return ideaString
@@ -179,12 +179,9 @@ export default function LoginPage(props) {
   
   async function handleAddIdea(idea) {
     try {
-      // setLoading(true);
       console.log("THIS IS IDEA, ", idea)
       const data = await ideaAPI.create(idea);
-
-      setIdea([data.idea, ...idea]);
-      // setLoading(false);
+      console.log(data);
     } catch (err) {
       console.log(err);
       setError(err.message);
@@ -202,33 +199,13 @@ export default function LoginPage(props) {
           <Header as="h2" color="teal" textAlign="center">
             Generate a Business Idea
           </Header>
-          <BusinessIdea 
-            value={idea}>
+          <BusinessIdeaForm 
+            value={idea}
+            handleIdea={handleIdea}
+            handleSave={handleSave}>
             
-            </BusinessIdea>
-            <Button
-                color="teal"
-                fluid
-                size="large"
-                type="submit"
-                onClick={handleSave}
-                className="btn"
-              >
+            </BusinessIdeaForm>
 
-                Save Idea
-            </Button>
-            <br />
-            <Button
-                color="teal"
-                fluid
-                size="large"
-                type="submit"
-                onClick={handleIdea}
-                className="btn"
-              >
-
-                Generate Disruptive Business Idea
-            </Button>
           <Message>
             New to us? <Link to="/signup">Sign Up</Link>
           </Message>
