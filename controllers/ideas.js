@@ -35,9 +35,9 @@ async function deleteIdea(req, res){
         
         const idea = await Idea.findOne({'ideas._id': req.params.id});
         idea.remove(req.params.id) // mutating a document
-		console.log(post, " <-= post in delete!")
+		console.log(idea, " <-= post in delete!")
         // req.params.id is the like id 
-        await post.save() // after you mutate a document you must save
+        // await idea.save() // after you mutate a document you must save
         res.json({data: 'idea removed'})
     } catch(err){
         console.log("ERROR HERE")

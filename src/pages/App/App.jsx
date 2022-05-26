@@ -5,6 +5,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import BusinessGeneratorPage from '../BusinessGeneratorPage/BusinessGeneratorPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import FeaturedPage from "../FeaturedPage/FeaturedPage";
 import userService from "../../utils/userService";
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<h1>This is Home Page!</h1>} />
+        <Route path="/" element={<FeaturedPage />} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -44,6 +45,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<FeaturedPage />} />
       <Route
         path="/login"
         element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -56,6 +58,9 @@ function App() {
         path="/businessgenerator"
         element={<BusinessGeneratorPage />}
       />
+
+      <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />} />
+
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );

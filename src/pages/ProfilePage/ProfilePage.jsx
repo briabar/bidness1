@@ -49,7 +49,7 @@ export default function ProfilePage(props) {
 
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [ideas]);
 
 
 

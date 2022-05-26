@@ -10,7 +10,8 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
-  profile
+  profile,
+  getAll,
 };
 
 function signup(req, res) {
@@ -72,6 +73,18 @@ async function profile(req, res){
     const ideas = await Idea.find({user: user._id}).populate("user").exec();
     console.log(ideas, ' this ideas')
     res.status(200).json({ideas: ideas, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
+  }
+}
+
+async function getAll(req, res){
+  try {
+    const users = await User.find({})
+    console.log("MY NAME IS JOHN!", users)
+    if(!users) return res.status(404).json({err: 'no users returned'})
+    res.status(200).json({users: users})
   } catch(err){
     console.log(err)
     res.status(400).json({err})

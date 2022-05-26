@@ -50,12 +50,26 @@ function getProfile(username){
   })
 }
 
+async function getAll() {
+  return fetch(BASE_URL + "getall", {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    }
+  }).then(res => {
+    console.log(res);
+    if(res.ok) return res.json();
+    throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
+  })
+}
+
 const userService = {
   signup,
   logout,
   login,
   getUser,
   getProfile,
+  getAll,
 };
 
 export default userService;
