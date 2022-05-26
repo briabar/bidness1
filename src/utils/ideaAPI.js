@@ -28,3 +28,23 @@ export function create(idea) {
       throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
     })
   }
+
+  export async function removeIdea(ideaId) {
+    return fetch(`${BASE_URL}/${ideaId}`, {
+		method: 'DELETE',
+		headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+		  }
+    }).then(res => {
+        if(res.ok) return res.json()
+        throw new Error('Not logged In! Check Express terminal')
+    })
+}
+
+  const userService = {
+    create,
+    getAll,
+    removeIdea,
+  };
+  
+  export default userService;

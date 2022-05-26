@@ -4,7 +4,10 @@ const ideasCtrl = require('../../controllers/ideas');
 const multer = require('multer');
 const upload = multer();
 
+console.log("AT IDEAS.JS")
 router.get('/', ideasCtrl.index)
 router.post('/', upload.single(), ideasCtrl.create)
+router.delete('/:id', ideasCtrl.deleteIdea)
+// router.get('/ideas/:id', ideasCtrl.deleteIdea)
 
 module.exports = router;

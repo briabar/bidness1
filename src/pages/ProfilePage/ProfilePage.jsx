@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 // import PageHeader from "../../components/Header/Header";
 // import Loading from "../../components/Loader/Loader";
-// import ProfileBio from "../../components/ProfileBio/ProfileBio";
-import PostGallery from "../../components/PostGallery/PostGallery";
+import ProfileBio from "../../components/ProfileBio/ProfileBio";
+import IdeaGallery from "../../components/IdeaGallery/IdeaGallery";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-
 import userService from "../../utils/userService";
+import ideaAPI from "../../utils/ideaAPI";
 
 import { useParams } from "react-router-dom";
 
@@ -22,6 +22,17 @@ export default function ProfilePage(props) {
   // We need to grab the username out of the url,
   const { username } = useParams();
   console.log(username);
+
+  async function removeIdea(ideaId) {
+      try {
+          const data = await ideaAPI.removeIdea(ideaId);
+          console.log(data, 'heres idea removal');
+          getProfile();
+      } catch(error) {
+          console.log(error);
+          setError(error.message)
+      }
+  }
 
   async function getProfile() {
     try {
@@ -70,21 +81,21 @@ export default function ProfilePage(props) {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          {/* <ProfileBio user={user} /> */}
+          <ProfileBio user={user} />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row centered>
         <Grid.Column style={{ maxWidth: 750 }}>
-        <span>{props.user.username}</span>
-        <PostGallery
+        <span>{user.username}'s Business Ideas</span>
+        <IdeaGallery
             isProfile={true}
             ideas={ideas}
-            numPhotosCol={3}
+            numPhotosCol={1}
             user={props.user}
+            removeIdea={removeIdea}
           />
         </Grid.Column>
       </Grid.Row>
     </Grid>
   );
 }
-
