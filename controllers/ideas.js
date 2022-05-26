@@ -19,11 +19,11 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
-        const idea = await Idea.create({caption: req.body.idea, user: req.user});
+        const idea = await Idea.create({idea: req.body.idea, user: req.user});
+        console.log(idea)
         await idea.save()// save it
         res.status(201).json({data: 'idea added'})
-    } catch(err){
-
+    } catch(err){ 
         res.status(400).json({err})
     }
 }

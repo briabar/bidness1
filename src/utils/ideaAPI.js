@@ -3,11 +3,12 @@ import tokenService from './tokenService';
 const BASE_URL = '/api/ideas';
 
 export function create(idea) {
+    console.log("HELLO", idea.get('idea'))
     return fetch(BASE_URL, {
       method: 'POST',
       body: idea,
       headers: {
-        'Authorization': 'Bearer ' + tokenService.getToken()
+        'Authorization': 'Bearer ' + tokenService.getToken(),
       }
     
     }).then(res => {

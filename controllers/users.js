@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Idea = require("../models/idea");
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require("uuid");
@@ -9,6 +10,7 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
+  profile
 };
 
 function signup(req, res) {
@@ -60,6 +62,22 @@ async function login(req, res) {
     return res.status(401).json(err);
   }
 }
+
+async function profile(req, res){
+  try {
+    const user = await User.findOne({username: req.params.username})
+    console.log("THIS IS CONTEXT LOLOL", user);
+    if(!user) return res.status(404).json({err: 'User not found'})
+
+    const ideas = await Idea.find({user: user._id}).populate("user").exec();
+    console.log(ideas, ' this ideas')
+    res.status(200).json({ideas: ideas, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
+  }
+}
+
 
 /*----- Helper Functions -----*/
 

@@ -162,10 +162,11 @@ export default function LoginPage(props) {
       //do nothing
     }
     else {
-      console.log(idea);
+      console.log("WHAT IS THIS", idea);
       //save the idea
       const formData = new FormData()
       formData.append('idea', idea)
+      console.log(formData.get('idea'))
       handleAddIdea(formData); 
     }
 
@@ -177,11 +178,11 @@ export default function LoginPage(props) {
 
   }
   
-  async function handleAddIdea(idea) {
+  async function handleAddIdea(form) {
     try {
-      console.log("THIS IS IDEA, ", idea)
-      const data = await ideaAPI.create(idea);
-      console.log(data);
+      console.log("THIS IS IDEA, ", form.get('idea'))
+      const data = await ideaAPI.create(form);
+      console.log("THIS IS DATA", data);
     } catch (err) {
       console.log(err);
       setError(err.message);
