@@ -16,6 +16,9 @@
 
 
 ![alt text](./p43.jpg)
+
+
+
 Bidness is a revolutionary new tool for creating earth shaking business ideas.  
 
 
