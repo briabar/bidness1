@@ -25,9 +25,7 @@ export default function ProfilePage(props) {
 
   async function removeIdea(ideaId) {
       try {
-          console.log("THIS IS IDEA REMOVE IN PROFILE PAGE!!!!!", ideaId);
           const data = await ideaAPI.removeIdea(ideaId);
-          console.log(data, 'heres idea removal');
           getProfile();
       } catch(error) {
           console.log(error);
@@ -35,6 +33,7 @@ export default function ProfilePage(props) {
       }
   }
 
+    //staring into the abyss.
   const getProfile = useCallback( async () => {
     try {
       const data = await userService.getProfile(username);
