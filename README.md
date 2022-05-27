@@ -1,14 +1,14 @@
-## Bidness
+# Bidness
 ![alt text](./screencap.jpg)
 
 Bidness is a revolutionary new tool for creating earth shaking business ideas.  
 
 
-#### Purpose
+## Purpose
 
 The purpose of this app was and is to try and get my head around the MERN stack.  I'm 
 
-#### Technologies Used
+## Technologies Used
 
     1. React
     2. mongoose/mongodb
@@ -17,7 +17,7 @@ The purpose of this app was and is to try and get my head around the MERN stack.
     5. token based authentication
     6. CSS
 
-#### Getting Started
+## Getting Started
 
 [trello](https://trello.com/b/BnuVBCE0/bidness)
 
