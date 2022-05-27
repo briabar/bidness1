@@ -32,7 +32,7 @@ function App() {
         />
         <Route
           path="/signup"
-          element={<SignupPage user={user} handleLogout={handleLogout}/>}
+          element={<SignupPage user={user} handleSignUpOrLogin={handleSignUpOrLogin} handleLogout={handleLogout}/>}
         />
         <Route
           path="/businessgenerator"

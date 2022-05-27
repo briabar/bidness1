@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Grid } from "semantic-ui-react";
 import PageHeader from "../../components/PageHeader/PageHeader";
 // import Loading from "../../components/Loader/Loader";
@@ -35,7 +35,7 @@ export default function ProfilePage(props) {
       }
   }
 
-  async function getProfile() {
+  const getProfile = useCallback( async () => {
     try {
       const data = await userService.getProfile(username);
       console.log(data, " < -- data");
@@ -46,10 +46,10 @@ export default function ProfilePage(props) {
       console.log(err);
       setError("Profile Doesn't exists, CHECK YOUR TERMINAL FOR EXPRESS!");
     }
-  }
+  })
 
   useEffect(() => {
-    // getProfile();
+    getProfile();
   }, []);
 
 
