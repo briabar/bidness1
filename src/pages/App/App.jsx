@@ -25,27 +25,27 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<FeaturedPage />} />
+        <Route path="/" element={<FeaturedPage user={user} handleLogout={handleLogout} />} />
         <Route
           path="/login"
-          element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
+          element={<LoginPage user={user} handleLogout={handleLogout} />}
         />
         <Route
           path="/signup"
-          element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
+          element={<SignupPage user={user} handleLogout={handleLogout}/>}
         />
         <Route
           path="/businessgenerator"
-          element={<BusinessGeneratorPage />}
+          element={<BusinessGeneratorPage user={user} handleLogout={handleLogout}/>}
         />
-        <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />} />
+        <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout} />} />
       </Routes>
     );
   }
 
   return (
     <Routes>
-      <Route path="/" element={<FeaturedPage />} />
+      {/* <Route path="/" element={<FeaturedPage />} /> */}
       <Route
         path="/login"
         element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
@@ -54,12 +54,12 @@ function App() {
         path="/signup"
         element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
       />
-      <Route
+      {/* <Route
         path="/businessgenerator"
         element={<BusinessGeneratorPage />}
-      />
+      /> */}
 
-      <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />} />
+      {/* <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />} /> */}
 
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>

@@ -3,6 +3,9 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
+import PageHeader from "../../components/PageHeader/PageHeader";
+import Logo from "../bidnessicon.png"
+
 
 export default function SignUpPage(props) {
 
@@ -70,8 +73,9 @@ export default function SignUpPage(props) {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center">
-          <Image src="https://i.imgur.com/s4LrnlU.png" /> Sign Up
+      <PageHeader handleLogout={props.handleLogout} user={props.user}/>
+        <Header as="h2" color="purple" textAlign="center">
+          <Image src={Logo} /> Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./FeaturedPage.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import FeaturedFeed from "../../components/FeaturedFeed/FeaturedFeed";
+import PageHeader from "../../components/PageHeader/PageHeader";
 import userService from "../../utils/userService";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -45,6 +46,7 @@ export default function FeaturedPage(props) {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
+        <PageHeader handleLogout={props.handleLogout} user={props.user}/>
           <Header as="h2" color="teal" textAlign="center">
             Featured Entrepreneurs
           </Header>

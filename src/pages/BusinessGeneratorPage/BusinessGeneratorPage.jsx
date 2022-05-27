@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./BusinessGeneratorPage.css";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
+import PageHeader from "../../components/PageHeader/PageHeader";
 import { useNavigate, Link } from "react-router-dom";
 import {
   Button,
@@ -197,7 +198,8 @@ export default function LoginPage(props) {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="teal" textAlign="center">
+        <PageHeader handleLogout={props.handleLogout} user={props.user}/>
+          <Header as="h2" color="blue" textAlign="center">
             Generate a Business Idea
           </Header>
           <BusinessIdeaForm 

@@ -30,10 +30,10 @@ async function create(req, res) {
 }
 
 async function deleteIdea(req, res){
-    // console.log("BBBBBBBBBBBBBBBBB!")
+    console.log("ALL THE WAY DOWN HERE, ", req.params.id)
     try {
         
-        const idea = await Idea.findOne({'ideas._id': req.params.id});
+        const idea = await Idea.findById(req.params.id);
         idea.remove(req.params.id) // mutating a document
 		console.log(idea, " <-= post in delete!")
         // req.params.id is the like id 

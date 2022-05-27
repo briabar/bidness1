@@ -3,7 +3,8 @@ import { Card, Icon, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 function IdeaCard({ idea, isProfile, removeIdea, user }) {
   function removeIdeaClick(ideaId) {
-    removeIdea(idea._id)
+    console.log("THIS ONE IS BEING DELETED!--->", ideaId);
+    removeIdea(ideaId)
   }
 
   // if the logged users id doesn't exist in the post.likes array, then the heart should be
@@ -11,34 +12,25 @@ function IdeaCard({ idea, isProfile, removeIdea, user }) {
   console.log(idea);
   return (
     <Card key={idea._id} raised>
-      {isProfile ? (
+      {!idea ? (
         ""
       ) : (
         <Card.Content textAlign="left">
           <Card.Header>
             <Link to={`/${idea.user.username}`}>
-              {/* <Image
-                size="large"
-                avatar
-                src={
-                  idea.user.photoUrl
-                    ? post.user.photoUrl
-                    : "https://react.semantic-ui.com/images/wireframe/square-image.png"
-                }
-              /> */}
               {idea.user.username}
             </Link>
           </Card.Header>
         </Card.Content>
       )}
 
-      {/* <Image src={`${idea.photoUrl}`} wrapped ui={false} /> */}
       <Card.Content>
         <Card.Description>{idea.idea}</Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
         <Button
-        onClick={removeIdeaClick} />
+        color="red"
+        onClick={() => removeIdeaClick(idea._id)}>Delete</Button>
       </Card.Content>
     </Card>
   );

@@ -7,14 +7,6 @@ export default function IdeaFeed({ideas, numPhotosCol, isProfile, removeIdea, us
 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
-        {/* {loading ? (
-          <Segment>
-            <Dimmer active inverted>
-              <Loader size="small">Loading</Loader>
-            </Dimmer>
-            <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
-          </Segment>
-        ) : null} */}
         {ideas.map((idea) => {
           return (
             <IdeaCard

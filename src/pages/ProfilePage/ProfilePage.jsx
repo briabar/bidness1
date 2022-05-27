@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Grid } from "semantic-ui-react";
-// import PageHeader from "../../components/Header/Header";
+import PageHeader from "../../components/PageHeader/PageHeader";
 // import Loading from "../../components/Loader/Loader";
 import ProfileBio from "../../components/ProfileBio/ProfileBio";
 import IdeaGallery from "../../components/IdeaGallery/IdeaGallery";
@@ -25,6 +25,7 @@ export default function ProfilePage(props) {
 
   async function removeIdea(ideaId) {
       try {
+          console.log("THIS IS IDEA REMOVE IN PROFILE PAGE!!!!!", ideaId);
           const data = await ideaAPI.removeIdea(ideaId);
           console.log(data, 'heres idea removal');
           getProfile();
@@ -49,7 +50,7 @@ export default function ProfilePage(props) {
 
   useEffect(() => {
     getProfile();
-  }, [ideas]);
+  }, []);
 
 
 
@@ -76,7 +77,7 @@ export default function ProfilePage(props) {
     <Grid>
       <Grid.Row>
         <Grid.Column>
-          {/* <PageHeader handleLogout={props.handleLogout} user={props.user}/> */}
+          <PageHeader handleLogout={props.handleLogout} user={props.user}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>

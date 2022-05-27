@@ -30,6 +30,7 @@ export function create(idea) {
   }
 
   export async function removeIdea(ideaId) {
+    console.log("IDEAID IN ideaAPI.removeIdea()", ideaId);
     return fetch(`${BASE_URL}/${ideaId}`, {
 		method: 'DELETE',
 		headers: {

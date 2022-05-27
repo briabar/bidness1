@@ -11,6 +11,7 @@ function IdeaCard({ user }) {
               <Image
                 size="small"
                 avatar
+                rounded
                 src={
                   user.photoUrl
                     ? user.photoUrl
@@ -21,13 +22,10 @@ function IdeaCard({ user }) {
             </Link>
           </Card.Header>
         </Card.Content>
-
-      {/* <Image src={`${idea.photoUrl}`} wrapped ui={false} /> */}
       <Card.Content>
         <Card.Description>{user.bio}</Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
-        <Button/>
       </Card.Content>
     </Card>
   );

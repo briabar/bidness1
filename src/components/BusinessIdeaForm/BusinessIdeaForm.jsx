@@ -13,7 +13,7 @@ export default function BusinessIdea(props){
     <span className="businessidea">{props.value}</span>
     <input name="idea" type="hidden" value={props.value}></input>
     <Button
-    color="teal"
+    color="blue"
     fluid
     size="large"
     type="submit"
@@ -24,7 +24,7 @@ export default function BusinessIdea(props){
 </Button>
 <br />
 <Button
-    color="teal"
+    color="blue"
     fluid
     size="large"
     onClick={props.handleIdea}
