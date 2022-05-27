@@ -30,15 +30,17 @@ async function create(req, res) {
 }
 
 async function deleteIdea(req, res){
-    console.log("ALL THE WAY DOWN HERE, ", req.params.id)
     try {
-        
         const idea = await Idea.findById(req.params.id);
-        idea.remove(req.params.id) // mutating a document
-		console.log(idea, " <-= post in delete!")
+        if (req.user._id === idea.user.valueOf()) {
+            idea.remove(req.params.id) // mutating a document
+            res.json({data: 'idea removed'})
+        }
         // req.params.id is the like id 
         // await idea.save() // after you mutate a document you must save
-        res.json({data: 'idea removed'})
+        else {
+            res.json({data: 'idea not removed'})
+        }
     } catch(err){
         console.log("ERROR HERE")
         res.status(400).json({err})
