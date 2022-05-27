@@ -20,4 +20,5 @@ The purpose of this app was and is to try and get my head around the MERN stack.
 #### Getting Started
 
 [trello](https://trello.com/b/BnuVBCE0/bidness)
+
 [app on heroku](https://seriousbidness.herokuapp.com)
