@@ -1,5 +1,5 @@
 ## Bidness
-![alt text](./screencap.jpg.jpg)
+![alt text](./screencap.jpg)
 
 Bidness is a revolutionary new tool for creating earth shaking business ideas.  
 
